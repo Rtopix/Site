@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengram — The Ultimate Messaging App</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-blue: #007aff;
+            --sub-text: #86868b;
+            --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--apple-font);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInPage 1s ease-out forwards;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 12vw, 64px);
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .subtitle-container {
+            font-size: clamp(16px, 5vw, 22px);
+            color: var(--sub-text);
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            height: 1.5em;
+            margin-bottom: 40px;
+        }
+
+        #typewriter::after {
+            content: '';
+            display: inline-block;
+            width: 2px;
+            height: 0.9em;
+            background-color: var(--accent-blue);
+            margin-left: 4px;
+            vertical-align: middle;
+            animation: blink 1s infinite;
+        }
+
+        .cta-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-download {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 18px 0;
+            width: 100%;
+            max-width: 320px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .btn-download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .btn-download:active {
+            transform: scale(0.96);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (hover: hover) {
+            .btn-download:hover {
+                border-color: var(--accent-blue);
+                box-shadow: 0 0 30px rgba(0, 122, 255, 0.2);
+            }
+            .btn-download:hover::before {
+                left: 150%;
+            }
+        }
+
+        .github-link {
+            color: var(--sub-text);
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 40px 0;
+            text-align: center;
+            color: #2c2c2e;
+            font-size: 13px;
+        }
+
+        @keyframes fadeInPage {
+            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(15px); }
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">Mengram</div>
+        </header>
+
+        <main>
+            <h1>The Ultimate<br>Messaging App.</h1>
+            <div class="subtitle-container">
+                <span id="typewriter"></span>
+            </div>
+
+            <div class="cta-area">
+                <a href="https://github.com/Rtopix/Mengram/releases/latest" class="btn-download">Download APK</a>
+                <a href="https://github.com/Rtopix/Mengram" class="github-link">Find the code on GitHub</a>
+            </div>
+        </main>
+
+        <footer>
+            © 2026 Mengram Messenger LLP.
+        </footer>
+    </div>
+
+    <script>
+        const text = "Simple, fast, and secure messaging.";
+        const speed = 50; 
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        window.onload = () => {
+            setTimeout(typeWriter, 500); 
+        };
+    </script>
+
+</body>
+</html>
