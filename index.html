@@ -143,6 +143,22 @@
             font-size: 13px;
         }
 
+        /* Стили для ссылки на политику */
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-link {
+            color: #424245;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--sub-text);
+            text-decoration: underline;
+        }
+
         @keyframes fadeInPage {
             to { opacity: 1; transform: translateY(0); }
             from { opacity: 0; transform: translateY(15px); }
@@ -173,7 +189,10 @@
         </main>
 
         <footer>
-            © 2026 Mengram Messenger LLP.
+            <div>© 2026 Mengram Messenger LLP.</div>
+            <div class="footer-links">
+                <a href="https://rtopix.github.io/PrivatePolicy/" class="footer-link">Политика конфиденциальности</a>
+            </div>
         </footer>
     </div>
 
